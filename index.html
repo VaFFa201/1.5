@@ -15,7 +15,7 @@
         <div class="container">
             <h2 class="brands__title">Ремонт техники различных брендов</h2>
             <div class="swiper">
-                <ul class=" brands__list swiper-wrapper"></ul>
+                <div class=" brands__list swiper-wrapper"></div>
 
                 <div class="swiper-pagination"></div>
             </div>
@@ -26,16 +26,11 @@
         </div>
     </section>
 
-
-
-
-    <template id="brand-template">
-        <li class="brands__item swiper-slide">
+    <template class="brand-template">
+        <button class="brands__item swiper-slide">
             <img src="" class="brands__image">
-            <a href="#" class="brands__link" target="_blank">
-                <img src="image/icons/brands_go.svg" alt="Brand link" class="link__image">
-            </a>
-        </li>
+            <img src="image/icons/brands_go.svg" alt="Brand link" class="link__image">
+        </button>
     </template>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

@@ -12,49 +12,58 @@ const brands = [
     './image/brands/ViewSonic.png'
 ];
 
-let brandsList = document.querySelector('.brands__list');
+const brandsList = document.querySelector('.brands__list');
 
-let brandItemTemplate = document.querySelector('#brand-template').content;
-let newItemTemplate = brandItemTemplate.querySelector('.brands__item');
+const brandItemTemplate = document.querySelector('.brand-template').content;
+const newItemTemplate = brandItemTemplate.querySelector('.brands__item');
 
-let brandShowAll = document.querySelector('.brands__btn');
-let btnText = brandShowAll.querySelector('.show-all-btn__text');
-let btnIcon = brandShowAll.querySelector('.show-all-btn__icon');
+const brandShowAll = document.querySelector('.brands__btn');
+const brandShowAllText = brandShowAll.querySelector('.show-all-btn__text');
+const brandShowAllIcon = brandShowAll.querySelector('.show-all-btn__icon');
 
 
 brandShowAll.onclick = function () {
     brandsList.classList.toggle('brands__list--extended');
     if (brandsList.classList.contains('brands__list--extended')) {
-        btnText.textContent = 'Скрыть';
-        btnIcon.src = './image/icons/double_up.svg';
+        brandShowAllText.textContent = 'Скрыть';
+        brandShowAllIcon.src = './image/icons/double_up.svg';
     } else {
-        btnText.textContent = 'Показать все';
-        btnIcon.src = './image/icons/double_down.svg';
+        brandShowAllText.textContent = 'Показать все';
+        brandShowAllIcon.src = './image/icons/double_down.svg';
     }
 }
 
-for (let i = 0; i < brands.length; i++) {
+for (let link of brands) {
     let brand = newItemTemplate.cloneNode(true);
-    let brandImage = brand.querySelector('.brands__image');
+    const brandImage = brand.querySelector('.brands__image');
 
-    brandImage.src = brands[i];
+    brandImage.src = String(link);
     brandsList.appendChild(brand);
 }
 
+let isSwiperExist = false;
+let swiper = new Swiper();
 
-const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    spaceBetween: 16,
-    slidesPerView: "auto",
+let swiperSwitch = function () {
+    if (!window.matchMedia("(min-width: 768px)").matches) {
+        if (!isSwiperExist) {
+            isSwiperExist = true;
 
-    breakpoints: {
-        768: {
-            enabled: false
+            swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                spaceBetween: 16,
+                slidesPerView: "auto",
+
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
         }
-    },
+    } else if (isSwiperExist) {
+        isSwiperExist = false;
+        swiper.destroy();
+    }
+}
 
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-    },
-});
+window.addEventListener("resize", swiperSwitch);
+

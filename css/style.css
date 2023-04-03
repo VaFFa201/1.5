@@ -68,6 +68,10 @@ body {
     /* ------------------------------------------------------- */
 }
 
+.brands {
+    margin-top: 50px;
+}
+
 .container {
     width: 95%;
     margin: 0 auto;
@@ -79,7 +83,7 @@ body {
     letter-spacing: -0.2px;
     text-transform: uppercase;
     color: #7E7E82;
-    margin: 0px 0px 40px 0px;
+    margin-bottom: 40px;
 }
 
 .brands__list {}
@@ -117,13 +121,13 @@ body {
         height: 160px;
         overflow: hidden;
         gap: 16px 32px;
-        margin: 0px 0px 24px 0px;
-        /* transition: all 0.6s ease-in-out; */
+        margin-bottom: 24px;
+        transition: height 0.4s ease-in-out;
     }
 
     .brands__list--extended {
         height: 336px;
-        /* transition: all 0.6s ease-in-out; */
+        transition: height 0.4s ease-in-out;
     }
 
     .swiper-slide {
@@ -151,7 +155,7 @@ body {
 
     .brands__list--extended {
         height: 248px;
-        /* transition: all 0.6s ease-in-out; */
+        transition: height 0.4s ease-in-out;
     }
 
 }
